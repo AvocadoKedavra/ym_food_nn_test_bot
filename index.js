@@ -11,7 +11,6 @@ function remove_spaces(err, str) {
 var needle = require('needle'),
 	cheerio = require("cheerio");
 	
-
 var final_var = '';
 function barents() {
 var name_id = `.itm7 .rest-menu .price-list`,
@@ -83,7 +82,6 @@ console.log('Мукка загружена!');
 });
 };
 
-
 barents();
 kuma();
 pirushka();
@@ -110,8 +108,6 @@ app.hears('/mukka', ctx => {
 	return ctx.replyWithMarkdown('_Mukka:_' + final_var_mukka);
 });
 
-
-
 app.hears('/pirushka', ctx => {
 	console.log('Clicked! on pirushka');
 	console.log(ctx.message.chat.id);
@@ -129,8 +125,3 @@ app.hears('/start', ctx => {
  return ctx.reply('Не надо стартовать, можно попробовать ввести /barents /kuma /pirushka /mukka и узнать сегодняшнее меню.');
 });
 app.startPolling();
-
-/* Названия
-rest_menu = $(name_id).each(function(i, item){
-    console.log($(this).children("h3").text())
-*/
