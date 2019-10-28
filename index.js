@@ -21,7 +21,7 @@ needle.get(URL, function(err, res){
 	final_var = '';
     var $ = cheerio.load(res.body),
             rest_menu = $(name_id).each(function(i, item){
-	final_var += '\n' + $(this).find('h3').text();
+	final_var += '\n *' + $(this).find('h3').text() + '*';
 	$(this).find('dl').each(function(i, item) {
 	final_var += '\n' + remove_spaces(err, $(this).text());
 	});
@@ -39,7 +39,7 @@ needle.get(URL, function(err, res){
 	var name_id = `.itm3 .rest-menu .price-list`;
     var $ = cheerio.load(res.body),
             rest_menu = $(name_id).each(function(i, item){
-	final_var_kuma += '\n' + $(this).find('h3').text();
+	final_var_kuma += '\n *' + $(this).find('h3').text() + '*';
 	$(this).find('dl').each(function(i, item) {
 	final_var_kuma += '\n' + remove_spaces(err, $(this).text());
 	});
@@ -58,7 +58,7 @@ needle.get(URL, function(err, res){
 	var name_id = `.itm4 .rest-menu .price-list`;
     var $ = cheerio.load(res.body),
             rest_menu = $(name_id).each(function(i, item){
-	final_var_pirushka += '\n' + $(this).find('h3').text();
+	final_var_pirushka += '\n *' + $(this).find('h3').text() + '*';
 	$(this).find('dl').each(function(i, item) {
 	final_var_pirushka += '\n' + remove_spaces(err, $(this).text());
 	});
@@ -101,13 +101,13 @@ var j = schedule.scheduleJob('0 10 * * *', function(){
 app.hears('/kuma', ctx => {
 	console.log('Clicked! on kuma');
 	console.log(ctx.message.chat.id);
-	return ctx.reply('Кума:' + final_var_kuma);
+	return ctx.replyWithMarkdown('_Кума:_' + final_var_kuma);
 });
 
 app.hears('/mukka', ctx => {
 	console.log('Clicked! on mukka');
 	console.log(ctx.message.chat.id);
-	return ctx.reply('Mukka:' + final_var_mukka);
+	return ctx.replyWithMarkdown('_Mukka:_' + final_var_mukka);
 });
 
 
@@ -115,13 +115,13 @@ app.hears('/mukka', ctx => {
 app.hears('/pirushka', ctx => {
 	console.log('Clicked! on pirushka');
 	console.log(ctx.message.chat.id);
-	return ctx.reply('Пирушка:' + final_var_pirushka);
+	return ctx.replyWithMarkdown('_Пирушка:_' + final_var_pirushka);
 });
 
 app.hears('/barents', ctx => {
 	console.log('Clicked! on barents');
 	console.log(ctx.message.chat.id);
-	return ctx.reply('Баренц:' + final_var);
+	return ctx.replyWithMarkdown('_Баренц:_' + final_var);
 });
 
 app.hears('/start', ctx => {
