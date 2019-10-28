@@ -122,6 +122,6 @@ app.hears('/barents', ctx => {
 
 app.hears('/start', ctx => {
 
- return ctx.reply('Не надо стартовать, можно попробовать ввести /barents /kuma /pirushka /mukka и узнать сегодняшнее меню.');
+ return ctx.replyWithMarkdown('Не надо стартовать, можно попробовать ввести */barents /kuma /pirushka /mukka* и узнать сегодняшнее меню.');
 });
 app.startPolling();
