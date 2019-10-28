@@ -94,7 +94,7 @@ var j = schedule.scheduleJob('0 10 * * *', function(){
 	kuma();
 	pirushka();
 	mukka();
-	app.telegram.sendMessage(220178914, final_var);
+	app.telegram.sendMessage(fs.readFileSync("users.txt", "utf8"), final_var);
 	console.log('The answer to life, the universe, and everything!');
 });
 
