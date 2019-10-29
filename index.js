@@ -20,11 +20,11 @@ needle.get(URL, function(err, res){
 	final_var = '';
     var $ = cheerio.load(res.body),
             rest_menu = $(name_id).each(function(i, item){
-	final_var += '\n *' + $(this).find('h3').text() + '*';
-	$(this).find('dl').each(function(i, item) {
-	final_var += '\n' + remove_spaces(err, $(this).text());
-	});
-});
+				final_var += '\n *' + $(this).find('h3').text() + '*';
+				$(this).find('dl').each(function(i, item) {
+					final_var += '\n' + remove_spaces(err, $(this).text());
+				});
+			});
 });
 console.log('Баренц загружен!');
 
@@ -37,12 +37,12 @@ needle.get(URL, function(err, res){
 	final_var_kuma = '';
 	var name_id = `.itm3 .rest-menu .price-list`;
     var $ = cheerio.load(res.body),
-            rest_menu = $(name_id).each(function(i, item){
-	final_var_kuma += '\n *' + $(this).find('h3').text() + '*';
-	$(this).find('dl').each(function(i, item) {
-	final_var_kuma += '\n' + remove_spaces(err, $(this).text());
+    rest_menu = $(name_id).each(function(i, item){
+		final_var_kuma += '\n *' + $(this).find('h3').text() + '*';
+		$(this).find('dl').each(function(i, item) {
+			final_var_kuma += '\n' + remove_spaces(err, $(this).text());
+		});
 	});
-});
 });
 console.log('Кума загружена!');
 
@@ -56,12 +56,12 @@ needle.get(URL, function(err, res){
 	final_var_pirushka = '';
 	var name_id = `.itm4 .rest-menu .price-list`;
     var $ = cheerio.load(res.body),
-            rest_menu = $(name_id).each(function(i, item){
-	final_var_pirushka += '\n *' + $(this).find('h3').text() + '*';
-	$(this).find('dl').each(function(i, item) {
-	final_var_pirushka += '\n' + remove_spaces(err, $(this).text());
+    rest_menu = $(name_id).each(function(i, item){
+		final_var_pirushka += '\n *' + $(this).find('h3').text() + '*';
+		$(this).find('dl').each(function(i, item) {
+			final_var_pirushka += '\n' + remove_spaces(err, $(this).text());
+		});
 	});
-});
 });
 console.log('Пирушка загружена!');
 
@@ -75,18 +75,20 @@ function mukka() {
 	final_var_mukka = '';
 	var name_id = `div.item_cards div:nth-child(1) .b_luch_selector`;
 	var $ = cheerio.load(res.body),
-		rest_menu = $(name_id).find('option').each(function(i, item){
-	final_var_mukka += '\n' + $(this).text();
+	rest_menu = $(name_id).find('option').each(function(i, item){
+		final_var_mukka += '\n' + $(this).text();
 	});
 console.log('Мукка загружена!');
 });
 };
 
+// run function on load
 barents();
 kuma();
 pirushka();
 mukka();
 
+// scheldue for geting actual information
 var j = schedule.scheduleJob('0 10 * * *', function(){
 	barents();
 	kuma();
@@ -96,6 +98,7 @@ var j = schedule.scheduleJob('0 10 * * *', function(){
 	console.log('The answer to life, the universe, and everything!');
 });
 
+// bot commands
 app.hears('/kuma', ctx => {
 	console.log('Clicked! on kuma');
 	console.log(ctx.message.chat.id);
@@ -124,4 +127,6 @@ app.hears('/start', ctx => {
 
  return ctx.replyWithMarkdown('Не надо стартовать, можно попробовать ввести */barents /kuma /pirushka /mukka* и узнать сегодняшнее меню.');
 });
+
+// function for run bot
 app.startPolling();
