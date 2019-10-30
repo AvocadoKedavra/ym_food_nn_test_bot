@@ -98,7 +98,7 @@ var j = schedule.scheduleJob('0 10 * * *', function(){
 	console.log('The answer to life, the universe, and everything!');
 });
 
-// bot commands
+// bot commands for user
 app.hears('/kuma', ctx => {
 	console.log('Clicked! on kuma');
 	console.log(ctx.message.chat.id);
@@ -122,6 +122,32 @@ app.hears('/barents', ctx => {
 	console.log(ctx.message.chat.id);
 	return ctx.replyWithMarkdown('_Баренц:_' + final_var);
 });
+
+// bot commands for chat
+app.hears('/kuma@ym_food_nn_test_bot', ctx => {
+	console.log('Clicked! on kuma in chat');
+	console.log('chatID: ' + ctx.message.chat.id);
+	return ctx.replyWithMarkdown('_Кума:_' + final_var_kuma);
+});
+
+app.hears('/mukka@ym_food_nn_test_bot', ctx => {
+	console.log('Clicked! on mukka in chat');
+	console.log('chatID: ' + ctx.message.chat.id);
+	return ctx.replyWithMarkdown('_Mukka:_' + final_var_mukka);
+});
+
+app.hears('/pirushka@ym_food_nn_test_bot', ctx => {
+	console.log('Clicked! on pirushka in chat');
+	console.log('chatID: ' + ctx.message.chat.id);
+	return ctx.replyWithMarkdown('_Пирушка:_' + final_var_pirushka);
+});
+
+app.hears('/barents@ym_food_nn_test_bot', ctx => {
+	console.log('Clicked! on barents in chat');
+	console.log('chatID: ' + ctx.message.chat.id);
+	return ctx.replyWithMarkdown('_Баренц:_' + final_var);
+});
+
 
 app.hears('/start', ctx => {
 
