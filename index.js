@@ -82,11 +82,27 @@ console.log('Мукка загружена!');
 });
 };
 
+var final_var_kfc = '';
+function kfc() {
+var name_id = `#root div div.pt-64 div.grid_inner div:nth-child(3) div`,
+	URL = 'https://www.kfc.ru/coupons';
+needle.get(URL, function(err, res){
+    if (err) throw err;
+	final_var_kfc = '';
+    var $ = cheerio.load(res.body),
+        menu_rest = $(name_id).find('div:nth-child(2)').each(function(i, item){
+            final_var_kfc +=  '\n*Код: ' + $(this).text() + '*\n_' + $(this).parent().find('div:nth-child(3)').text() + '_\nБыло: ' + $(this).parent().find('div:nth-child(4)').find('span:nth-child(1)').text() + ' *Цена по скидке: ' + $(this).parent().find('div:nth-child(4)').find('span:nth-child(2)').text() + ' ₽*\n';
+		});
+		console.log('kfc загружен!');
+});
+};
+
 // run function on load
 barents();
 kuma();
 pirushka();
 mukka();
+kfc();
 
 // scheldue for geting actual information
 var j = schedule.scheduleJob('0 10 * * *', function(){
@@ -94,6 +110,7 @@ var j = schedule.scheduleJob('0 10 * * *', function(){
 	kuma();
 	pirushka();
 	mukka();
+	kfc();
 	app.telegram.sendMessage(fs.readFileSync("users.txt", "utf8"), final_var);
 	console.log('The answer to life, the universe, and everything!');
 });
@@ -123,6 +140,12 @@ app.hears('/barents', ctx => {
 	return ctx.replyWithMarkdown('_Баренц:_' + final_var);
 });
 
+app.hears('/kfc', ctx => {
+	console.log('Clicked! on kfc');
+	console.log(ctx.message.chat.id);
+	return ctx.replyWithMarkdown('_KFC:_' + final_var_kfc);
+});
+
 // bot commands for chat
 app.hears('/kuma@ym_food_nn_test_bot', ctx => {
 	console.log('Clicked! on kuma in chat');
@@ -147,11 +170,15 @@ app.hears('/barents@ym_food_nn_test_bot', ctx => {
 	console.log('chatID: ' + ctx.message.chat.id);
 	return ctx.replyWithMarkdown('_Баренц:_' + final_var);
 });
-
+app.hears('/kfc@ym_food_nn_test_bot', ctx => {
+	console.log('Clicked! on kfc in chat');
+	console.log('chatID: ' + ctx.message.chat.id);
+	return ctx.replyWithMarkdown('_KFC:_' + final_var_kfc);
+});
 
 app.hears('/start', ctx => {
 
- return ctx.replyWithMarkdown('Не надо стартовать, можно попробовать ввести */barents /kuma /pirushka /mukka* и узнать сегодняшнее меню.');
+ return ctx.replyWithMarkdown('Не надо стартовать, можно попробовать ввести */barents /kuma /pirushka /mukka /kfc* и узнать сегодняшнее меню.');
 });
 
 // function for run bot
