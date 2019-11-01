@@ -2,6 +2,8 @@ const fs = require("fs");
 const Telegraf = require('telegraf');
 const app = new Telegraf(fs.readFileSync("password.txt", "utf8"));
 var schedule = require('node-schedule');
+var handyFunctions = require('./handyFunctions');
+
 
 function remove_spaces(err, str) {
 	if (err) throw err;
@@ -115,51 +117,46 @@ var j = schedule.scheduleJob('0 10 * * *', function(){
 	console.log('The answer to life, the universe, and everything!');
 });
 
-function botMenuMessage(shopName, shopMenu, ctx){
-	console.log('Clicked! on ' + shopName);
-	console.log(ctx.message.chat.id);
-	return ctx.replyWithMarkdown('_'+ shopName +':_' + shopMenu);
-};
 
 // bot commands for user
 app.hears('/kuma', ctx => {
-	botMenuMessage('Кума', final_var_kuma, ctx)
+	handyFunctions.botMenuMessage('Кума', final_var_kuma, ctx)
 });
 
 app.hears('/mukka', ctx => {
-	botMenuMessage('Mukka', final_var_mukka, ctx)
+	handyFunctions.botMenuMessage('Mukka', final_var_mukka, ctx)
 });
 
 app.hears('/pirushka', ctx => {
-	botMenuMessage('Пирушка у Ганса', final_var_pirushka, ctx)
+	handyFunctions.botMenuMessage('Пирушка у Ганса', final_var_pirushka, ctx)
 });
 
 app.hears('/barents', ctx => {
-	botMenuMessage('Баренц', final_var, ctx)
+	handyFunctions.botMenuMessage('Баренц', final_var, ctx)
 });
 
 app.hears('/kfc', ctx => {
-	botMenuMessage('KFC', final_var_kfc, ctx)
+	handyFunctions.botMenuMessage('KFC', final_var_kfc, ctx)
 });
 
 // bot commands for chat
 app.hears('/kuma@ym_food_nn_test_bot', ctx => {
-	botMenuMessage('Кума', final_var_kuma, ctx)
+	handyFunctions.botMenuMessage('Кума', final_var_kuma, ctx)
 });
 
 app.hears('/mukka@ym_food_nn_test_bot', ctx => {
-	botMenuMessage('Mukka', final_var_mukka, ctx)
+	handyFunctions.botMenuMessage('Mukka', final_var_mukka, ctx)
 });
 
 app.hears('/pirushka@ym_food_nn_test_bot', ctx => {
-	botMenuMessage('Пирушка у Ганса', final_var_pirushka, ctx)
+	handyFunctions.botMenuMessage('Пирушка у Ганса', final_var_pirushka, ctx)
 });
 
 app.hears('/barents@ym_food_nn_test_bot', ctx => {
-	botMenuMessage('Баренц', final_var, ctx)
+	handyFunctions.botMenuMessage('Баренц', final_var, ctx)
 });
 app.hears('/kfc@ym_food_nn_test_bot', ctx => {
-	botMenuMessage('KFC', final_var_kfc, ctx)
+	handyFunctions.botMenuMessage('KFC', final_var_kfc, ctx)
 });
 
 app.hears('/start', ctx => {
