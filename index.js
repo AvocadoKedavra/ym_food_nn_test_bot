@@ -91,7 +91,7 @@ needle.get(URL, function(err, res){
 	final_var_kfc = '';
     var $ = cheerio.load(res.body),
         menu_rest = $(name_id).find('div:nth-child(2)').each(function(i, item){
-            final_var_kfc +=  '\n*Код: ' + $(this).text() + '*\n_' + $(this).parent().find('div:nth-child(3)').text() + '_\nБыло: ' + $(this).parent().find('div:nth-child(4)').find('span:nth-child(1)').text() + ' *Цена по скидке: ' + $(this).parent().find('div:nth-child(4)').find('span:nth-child(2)').text() + ' ₽*\n';
+            final_var_kfc +=  '\n*Код: ' + $(this).text() + '*\n_' + $(this).parent().find('div:nth-child(3)').text() + '_\nБыло: ' + $(this).parent().find('div:nth-child(4)').find('span:nth-child(1)').text() + ' *Цена по коду: ' + $(this).parent().find('div:nth-child(4)').find('span:nth-child(2)').text() + ' ₽*\n';
 		});
 		console.log('kfc загружен!');
 });
@@ -115,65 +115,51 @@ var j = schedule.scheduleJob('0 10 * * *', function(){
 	console.log('The answer to life, the universe, and everything!');
 });
 
+function botMenuMessage(shopName, shopMenu, ctx){
+	console.log('Clicked! on ' + shopName);
+	console.log(ctx.message.chat.id);
+	return ctx.replyWithMarkdown('_'+ shopName +':_' + shopMenu);
+};
+
 // bot commands for user
 app.hears('/kuma', ctx => {
-	console.log('Clicked! on kuma');
-	console.log(ctx.message.chat.id);
-	return ctx.replyWithMarkdown('_Кума:_' + final_var_kuma);
+	botMenuMessage('Кума', final_var_kuma, ctx)
 });
 
 app.hears('/mukka', ctx => {
-	console.log('Clicked! on mukka');
-	console.log(ctx.message.chat.id);
-	return ctx.replyWithMarkdown('_Mukka:_' + final_var_mukka);
+	botMenuMessage('Mukka', final_var_mukka, ctx)
 });
 
 app.hears('/pirushka', ctx => {
-	console.log('Clicked! on pirushka');
-	console.log(ctx.message.chat.id);
-	return ctx.replyWithMarkdown('_Пирушка:_' + final_var_pirushka);
+	botMenuMessage('Пирушка у Ганса', final_var_pirushka, ctx)
 });
 
 app.hears('/barents', ctx => {
-	console.log('Clicked! on barents');
-	console.log(ctx.message.chat.id);
-	return ctx.replyWithMarkdown('_Баренц:_' + final_var);
+	botMenuMessage('Баренц', final_var, ctx)
 });
 
 app.hears('/kfc', ctx => {
-	console.log('Clicked! on kfc');
-	console.log(ctx.message.chat.id);
-	return ctx.replyWithMarkdown('_KFC:_' + final_var_kfc);
+	botMenuMessage('KFC', final_var_kfc, ctx)
 });
 
 // bot commands for chat
 app.hears('/kuma@ym_food_nn_test_bot', ctx => {
-	console.log('Clicked! on kuma in chat');
-	console.log('chatID: ' + ctx.message.chat.id);
-	return ctx.replyWithMarkdown('_Кума:_' + final_var_kuma);
+	botMenuMessage('Кума', final_var_kuma, ctx)
 });
 
 app.hears('/mukka@ym_food_nn_test_bot', ctx => {
-	console.log('Clicked! on mukka in chat');
-	console.log('chatID: ' + ctx.message.chat.id);
-	return ctx.replyWithMarkdown('_Mukka:_' + final_var_mukka);
+	botMenuMessage('Mukka', final_var_mukka, ctx)
 });
 
 app.hears('/pirushka@ym_food_nn_test_bot', ctx => {
-	console.log('Clicked! on pirushka in chat');
-	console.log('chatID: ' + ctx.message.chat.id);
-	return ctx.replyWithMarkdown('_Пирушка:_' + final_var_pirushka);
+	botMenuMessage('Пирушка у Ганса', final_var_pirushka, ctx)
 });
 
 app.hears('/barents@ym_food_nn_test_bot', ctx => {
-	console.log('Clicked! on barents in chat');
-	console.log('chatID: ' + ctx.message.chat.id);
-	return ctx.replyWithMarkdown('_Баренц:_' + final_var);
+	botMenuMessage('Баренц', final_var, ctx)
 });
 app.hears('/kfc@ym_food_nn_test_bot', ctx => {
-	console.log('Clicked! on kfc in chat');
-	console.log('chatID: ' + ctx.message.chat.id);
-	return ctx.replyWithMarkdown('_KFC:_' + final_var_kfc);
+	botMenuMessage('KFC', final_var_kfc, ctx)
 });
 
 app.hears('/start', ctx => {
