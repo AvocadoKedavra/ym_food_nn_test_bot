@@ -1,19 +1,17 @@
-const fs = require("fs");
-const Telegraf = require('telegraf');
-const app = new Telegraf(fs.readFileSync("password.txt", "utf8"));
-var schedule = require('node-schedule');
-var handyFunctions = require('./handyFunctions');
-
-
-function remove_spaces(err, str) {
-	if (err) throw err;
-	return str = str.replace(/\s+/g, " ");
-}
-
-var needle = require('needle'),
+const fs = require("fs"),
+	Telegraf = require('telegraf'),
+	app = new Telegraf(fs.readFileSync("password.txt", "utf8")),
+	schedule = require('node-schedule'),
+	handyFunctions = require('./handyFunctions'),
+	needle = require('needle'),
 	cheerio = require("cheerio");
 	
-var final_var = '';
+var final_var = '',
+	final_var_kuma = '',
+	final_var_pirushka = '',
+	final_var_mukka = '',
+	final_var_kfc = '';
+
 function barents() {
 var name_id = `.itm7 .rest-menu .price-list`,
 	URL = 'http://www.pir.nnov.ru/barents/restmenu/';
@@ -24,14 +22,13 @@ needle.get(URL, function(err, res){
             rest_menu = $(name_id).each(function(i, item){
 				final_var += '\n *' + $(this).find('h3').text() + '*';
 				$(this).find('dl').each(function(i, item) {
-					final_var += '\n' + remove_spaces(err, $(this).text());
+					final_var += '\n' + handyFunctions.remove_spaces(err, $(this).text());
 				});
 			});
+	console.log('Баренц загружен!');
 });
-console.log('Баренц загружен!');
-
 };
-var final_var_kuma = '';
+
 function kuma() {
 var URL = 'http://www.pir.nnov.ru/kuma/restmenu/';
 needle.get(URL, function(err, res){
@@ -42,15 +39,13 @@ needle.get(URL, function(err, res){
     rest_menu = $(name_id).each(function(i, item){
 		final_var_kuma += '\n *' + $(this).find('h3').text() + '*';
 		$(this).find('dl').each(function(i, item) {
-			final_var_kuma += '\n' + remove_spaces(err, $(this).text());
+			final_var_kuma += '\n' + handyFunctions.remove_spaces(err, $(this).text());
 		});
 	});
-});
 console.log('Кума загружена!');
-
+});
 };
 
-var final_var_pirushka = '';
 function pirushka() {
 var URL = 'http://www.pir.nnov.ru/pirushka/restmenu/';
 needle.get(URL, function(err, res){
@@ -61,15 +56,13 @@ needle.get(URL, function(err, res){
     rest_menu = $(name_id).each(function(i, item){
 		final_var_pirushka += '\n *' + $(this).find('h3').text() + '*';
 		$(this).find('dl').each(function(i, item) {
-			final_var_pirushka += '\n' + remove_spaces(err, $(this).text());
+			final_var_pirushka += '\n' + handyFunctions.remove_spaces(err, $(this).text());
 		});
 	});
+	console.log('Пирушка загружена!');
 });
-console.log('Пирушка загружена!');
-
 };
 
-var final_var_mukka = '';
 function mukka() {
 	var URL = 'https://ekdostavka.ru/rest/mukka/Lunch/';
 		needle.get(URL, function(err, res){
@@ -84,7 +77,7 @@ console.log('Мукка загружена!');
 });
 };
 
-var final_var_kfc = '';
+
 function kfc() {
 var name_id = `#root div div.pt-64 div.grid_inner div:nth-child(3) div`,
 	URL = 'https://www.kfc.ru/coupons';
@@ -160,8 +153,7 @@ app.hears('/kfc@ym_food_nn_test_bot', ctx => {
 });
 
 app.hears('/start', ctx => {
-
- return ctx.replyWithMarkdown('Не надо стартовать, можно попробовать ввести */barents /kuma /pirushka /mukka /kfc* и узнать сегодняшнее меню.');
+ return ctx.replyWithMarkdown('Не надо стартовать, можно попробовать ввести:\n*/barents /kuma /pirushka /mukka /kfc*\nи узнать сегодняшнее меню.\nЕсли вы добавите нашего бота в чат, то сможете использовать те же команды.');
 });
 
 // function for run bot
