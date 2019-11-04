@@ -66,7 +66,7 @@ needle.get(URL, function(err, res){
 function mukka() {
 	var URL = 'https://ekdostavka.ru/rest/mukka/Lunch/';
 		needle.get(URL, function(err, res){
-    if (err) throw err;
+    if (err) { return console.log('Mukka not working'); };
 	final_var_mukka = '';
 	var name_id = `div.item_cards div:nth-child(1) .b_luch_selector`;
 	var $ = cheerio.load(res.body),
@@ -82,7 +82,7 @@ function kfc() {
 var name_id = `#root div div.pt-64 div.grid_inner div:nth-child(3) div`,
 	URL = 'https://www.kfc.ru/coupons';
 needle.get(URL, function(err, res){
-    if (err) throw err;
+    if (err) { return console.log('KFC not working'); };
 	final_var_kfc = '';
     var $ = cheerio.load(res.body),
         menu_rest = $(name_id).find('div:nth-child(2)').each(function(i, item){
