@@ -1,9 +1,9 @@
 const fs = require("fs"),
 	Telegraf = require('telegraf'),
 	app = new Telegraf(fs.readFileSync("password.txt", "utf8")),
-	schedule = require('node-schedule'),
 	handyFunctions = require('./handyFunctions'),
 	needle = require('needle'),
+	schedule = require('node-schedule');
 	cheerio = require("cheerio");
 	
 var final_var = '',
@@ -12,6 +12,19 @@ var final_var = '',
 	final_var_mukka = '',
 	final_var_kfc = '';
 
+
+	function getMenu(hours,minutes) {
+        var j = schedule.scheduleJob(minutes + ' ' + hours + ' ' + '* * *', function(){
+            barents();
+            kuma();
+            pirushka();
+            mukka();
+            kfc();
+            app.telegram.sendMessage(fs.readFileSync("users.txt", "utf8"), final_var);
+            console.log('The answer to life, the universe, and everything!');
+        });
+		};
+		
 function barents() {
 var name_id = `.itm7 .rest-menu .price-list`,
 	URL = 'http://www.pir.nnov.ru/barents/restmenu/';
@@ -100,39 +113,12 @@ mukka();
 kfc();
 
 // scheldue for geting actual information
-var j = schedule.scheduleJob('0 9 * * *', function(){
-	barents();
-	kuma();
-	pirushka();
-	mukka();
-	kfc();
-	app.telegram.sendMessage(fs.readFileSync("users.txt", "utf8"), final_var);
-	console.log('The answer to life, the universe, and everything!');
-});
-var k = schedule.scheduleJob('30 10 * * *', function(){
-	barents();
-	kuma();
-	pirushka();
-	mukka();
-	kfc();
-	console.log('Зобрано!');
-});
-var l = schedule.scheduleJob('30 11 * * *', function(){
-	barents();
-	kuma();
-	pirushka();
-	mukka();
-	kfc();
-	console.log('Зобрано!');
-});
-var m = schedule.scheduleJob('30 12 * * *', function(){
-	barents();
-	kuma();
-	pirushka();
-	mukka();
-	kfc();
-	console.log('Зобрано!');
-});
+getMenu(10,00);
+getMenu(10,30);
+getMenu(11,30);
+getMenu(12,30);
+getMenu(21,33);
+
 
 // bot commands for user
 app.hears('/kuma', ctx => {
