@@ -100,7 +100,7 @@ mukka();
 kfc();
 
 // scheldue for geting actual information
-var j = schedule.scheduleJob('0 10 * * *', function(){
+var j = schedule.scheduleJob('0 9 * * *', function(){
 	barents();
 	kuma();
 	pirushka();
@@ -109,7 +109,30 @@ var j = schedule.scheduleJob('0 10 * * *', function(){
 	app.telegram.sendMessage(fs.readFileSync("users.txt", "utf8"), final_var);
 	console.log('The answer to life, the universe, and everything!');
 });
-
+var k = schedule.scheduleJob('30 10 * * *', function(){
+	barents();
+	kuma();
+	pirushka();
+	mukka();
+	kfc();
+	console.log('Зобрано!');
+});
+var l = schedule.scheduleJob('30 11 * * *', function(){
+	barents();
+	kuma();
+	pirushka();
+	mukka();
+	kfc();
+	console.log('Зобрано!');
+});
+var m = schedule.scheduleJob('30 12 * * *', function(){
+	barents();
+	kuma();
+	pirushka();
+	mukka();
+	kfc();
+	console.log('Зобрано!');
+});
 
 // bot commands for user
 app.hears('/kuma', ctx => {
