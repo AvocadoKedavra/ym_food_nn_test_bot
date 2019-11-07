@@ -39,15 +39,12 @@ function samurai() {
 		switch (samuraiVar) {
 			case 1:
 				final_var_samurai = samuraiEuro[samuraiVar];
-				console.log();
 			  break;
 			case 2:
 				final_var_samurai = samuraiEuro[samuraiVar];
-				console.log();
 			  break;
 			case 3:
 				final_var_samurai = samuraiEuro[samuraiVar];
-				console.log();
 			  break;
 			case 4:
 				final_var_samurai = samuraiEuro[samuraiVar];
@@ -55,31 +52,25 @@ function samurai() {
 			  break;
 			case 5:
 				final_var_samurai = samuraiEuro[samuraiVar];
-				console.log();
 			  break;
 			case 6:
 				final_var_samurai = samuraiEuro[samuraiVar];
-				console.log();
+
 			  break;
 			case 7:
 				final_var_samurai = samuraiEuro[samuraiVar];
-				console.log();
 			  break;
 			case 8:
 				final_var_samurai = samuraiEuro[samuraiVar];
-				console.log();
 			  break;
 			case 9:
 				final_var_samurai = samuraiEuro[samuraiVar];
-				console.log();
 			  break;
 			case 10:
 				final_var_samurai = samuraiEuro[samuraiVar];
-				console.log();
 			  break;
 			case 10:
 				final_var_samurai = samuraiEuro[samuraiVar];
-				console.log();
 			  break;
 		  }
 }
