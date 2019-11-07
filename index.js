@@ -3,15 +3,20 @@ const fs = require("fs"),
 	app = new Telegraf(fs.readFileSync("password.txt", "utf8")),
 	handyFunctions = require('./handyFunctions'),
 	needle = require('needle'),
-	schedule = require('node-schedule');
+	schedule = require('node-schedule'),
 	cheerio = require("cheerio");
 	
 var final_var = '',
 	final_var_kuma = '',
 	final_var_pirushka = '',
 	final_var_mukka = '',
-	final_var_kfc = '';
+	final_var_kfc = '',
+	final_var_samurai = '';
 
+Date.prototype.getWeek = function () {
+        var onejan = new Date(this.getFullYear(), 0, 1);
+        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7)+9;
+	};
 
 	function getMenu(hours,minutes) {
         var j = schedule.scheduleJob(minutes + ' ' + hours + ' ' + '* * *', function(){
@@ -24,7 +29,63 @@ var final_var = '',
             console.log('The answer to life, the universe, and everything!');
         });
 		};
-		
+
+function samurai() {
+	var myDate = new Date(),
+		samuraiVar = myDate.getWeek()%10;
+		jsonsamuraiEuro = fs.readFileSync("samuraiEuro.json", "utf8"),
+		samuraiEuro = JSON.parse(jsonsamuraiEuro);
+
+		switch (samuraiVar) {
+			case 1:
+				final_var_samurai = samuraiEuro[samuraiVar];
+				console.log();
+			  break;
+			case 2:
+				final_var_samurai = samuraiEuro[samuraiVar];
+				console.log();
+			  break;
+			case 3:
+				final_var_samurai = samuraiEuro[samuraiVar];
+				console.log();
+			  break;
+			case 4:
+				final_var_samurai = samuraiEuro[samuraiVar];
+				console.log(final_var_samurai);
+			  break;
+			case 5:
+				final_var_samurai = samuraiEuro[samuraiVar];
+				console.log();
+			  break;
+			case 6:
+				final_var_samurai = samuraiEuro[samuraiVar];
+				console.log();
+			  break;
+			case 7:
+				final_var_samurai = samuraiEuro[samuraiVar];
+				console.log();
+			  break;
+			case 8:
+				final_var_samurai = samuraiEuro[samuraiVar];
+				console.log();
+			  break;
+			case 9:
+				final_var_samurai = samuraiEuro[samuraiVar];
+				console.log();
+			  break;
+			case 10:
+				final_var_samurai = samuraiEuro[samuraiVar];
+				console.log();
+			  break;
+			case 10:
+				final_var_samurai = samuraiEuro[samuraiVar];
+				console.log();
+			  break;
+		  }
+}
+
+samurai();
+
 function barents() {
 var name_id = `.itm7 .rest-menu .price-list`,
 	URL = 'http://www.pir.nnov.ru/barents/restmenu/';
@@ -117,7 +178,6 @@ getMenu(10,00);
 getMenu(10,30);
 getMenu(11,30);
 getMenu(12,30);
-getMenu(21,33);
 
 
 // bot commands for user
@@ -141,7 +201,15 @@ app.hears('/kfc', ctx => {
 	handyFunctions.botMenuMessage('KFC', final_var_kfc, ctx)
 });
 
+app.hears('/samurai', ctx => {
+	handyFunctions.botMenuMessage('SAMURAI', final_var_samurai, ctx)
+});
+
 // bot commands for chat
+app.hears('/samurai@ym_food_nn_test_bot', ctx => {
+	handyFunctions.botMenuMessage('SAMURAI', final_var_samurai, ctx)
+});
+
 app.hears('/kuma@ym_food_nn_test_bot', ctx => {
 	handyFunctions.botMenuMessage('Кума', final_var_kuma, ctx)
 });
@@ -160,6 +228,7 @@ app.hears('/barents@ym_food_nn_test_bot', ctx => {
 app.hears('/kfc@ym_food_nn_test_bot', ctx => {
 	handyFunctions.botMenuMessage('KFC', final_var_kfc, ctx)
 });
+
 
 app.hears('/start', ctx => {
  return ctx.replyWithMarkdown('Не надо стартовать, можно попробовать ввести:\n*/barents /kuma /pirushka /mukka /kfc*\nи узнать сегодняшнее меню.\nЕсли вы добавите нашего бота в чат, то сможете использовать те же команды.');
