@@ -24,7 +24,8 @@ Date.prototype.getWeek = function () {
             kuma();
             pirushka();
             mukka();
-            kfc();
+			kfc();
+			samurai();
             app.telegram.sendMessage(fs.readFileSync("users.txt", "utf8"), final_var);
             console.log('The answer to life, the universe, and everything!');
         });
@@ -48,14 +49,12 @@ function samurai() {
 			  break;
 			case 4:
 				final_var_samurai = samuraiEuro[samuraiVar];
-				console.log(final_var_samurai);
 			  break;
 			case 5:
 				final_var_samurai = samuraiEuro[samuraiVar];
 			  break;
 			case 6:
 				final_var_samurai = samuraiEuro[samuraiVar];
-
 			  break;
 			case 7:
 				final_var_samurai = samuraiEuro[samuraiVar];
@@ -73,9 +72,8 @@ function samurai() {
 				final_var_samurai = samuraiEuro[samuraiVar];
 			  break;
 		  }
+		  console.log('Самурай загружен!');
 }
-
-samurai();
 
 function barents() {
 var name_id = `.itm7 .rest-menu .price-list`,
@@ -163,6 +161,7 @@ kuma();
 pirushka();
 mukka();
 kfc();
+samurai();
 
 // scheldue for geting actual information
 getMenu(10,00);
@@ -193,7 +192,7 @@ app.hears('/kfc', ctx => {
 });
 
 app.hears('/samurai', ctx => {
-	handyFunctions.botMenuMessage('SAMURAI', final_var_samurai, ctx)
+	handyFunctions.botMenuMessage('SAMURAI', final_var_samurai, ctx);
 });
 
 // bot commands for chat

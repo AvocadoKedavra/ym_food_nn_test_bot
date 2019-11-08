@@ -1,7 +1,13 @@
 const fs = require('fs');
 
 module.exports = {
-    botMenuMessage: function(shopName, shopMenu, ctx){
+    botMenuMessage: function(shopName, shopMenu, ctx, urlContent){
+        if ( arguments.length === 3 ) {
+            shopName = arguments[0];
+            shopMenu = arguments[1];
+            ctx = arguments[2];
+            url = null;
+          }
         console.log('Clicked! on ' + shopName);
         console.log(ctx.from);
         var json = JSON.stringify(ctx.from) + ',\n';
@@ -12,7 +18,12 @@ module.exports = {
         if (shopMenu == '') {
             return ctx.replyWithMarkdown('Ресторан - или убрал страницу меню, или в корне изменил форматирование страницы. Как только я пойму что с ней - я всё поправлю. \n_- @alamamala_');
         }
-        return ctx.replyWithMarkdown('_'+ shopName +':_' + shopMenu);
+        if (shopName = 'SAMURAI') {
+            return ctx.replyWithMarkdown('_'+ shopName +':_' + shopMenu);
+                   ctx.replyWithPhoto({ url: urlContent });
+        } else {
+            return ctx.replyWithMarkdown('_'+ shopName +':_' + shopMenu);
+        }
     },
     remove_spaces: function(err, str) {
         if (err) throw err;
