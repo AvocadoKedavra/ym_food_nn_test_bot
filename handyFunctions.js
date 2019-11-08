@@ -18,7 +18,7 @@ module.exports = {
         if (shopMenu == '') {
             return ctx.replyWithMarkdown('Ресторан - или убрал страницу меню, или в корне изменил форматирование страницы. Как только я пойму что с ней - я всё поправлю. \n_- @alamamala_');
         }
-        if (shopName = 'SAMURAI') {
+        if (shopName == 'SAMURAI') {
             return ctx.replyWithMarkdown('_'+ shopName +':_' + shopMenu);
                    ctx.replyWithPhoto({ url: urlContent });
         } else {
