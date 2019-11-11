@@ -1,0 +1,25 @@
+{
+  "name": "ym_food_nn_test_bot",
+  "version": "1.0.0",
+  "description": "<div>Food Bot</div> <div>You can <a href=\"https://t.me/ym_food_nn_test_bot\">Test my bot</a></div>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alamamala/ym_food_nn_test_bot.git"
+  },
+  "author": "Moiseichenko Alexander",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alamamala/ym_food_nn_test_bot/issues"
+  },
+  "homepage": "https://github.com/alamamala/ym_food_nn_test_bot#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "needle": "^2.4.0",
+    "node-schedule": "^1.3.2",
+    "telegraf": "^3.33.3"
+  }
+}
