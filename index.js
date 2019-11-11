@@ -79,7 +79,7 @@ function barents() {
 var name_id = `.itm7 .rest-menu .price-list`,
 	URL = 'http://www.pir.nnov.ru/barents/restmenu/';
 needle.get(URL, function(err, res){
-    if (err) throw err;
+    if (err) { return console.log('barents not working'); };
 	final_var = '';
     var $ = cheerio.load(res.body),
             rest_menu = $(name_id).each(function(i, item){
@@ -95,7 +95,7 @@ needle.get(URL, function(err, res){
 function kuma() {
 var URL = 'http://www.pir.nnov.ru/kuma/restmenu/';
 needle.get(URL, function(err, res){
-    if (err) throw err;
+    if (err) { return console.log('kuma not working'); }
 	final_var_kuma = '';
 	var name_id = `.itm3 .rest-menu .price-list`;
     var $ = cheerio.load(res.body),
@@ -112,7 +112,7 @@ console.log('Кума загружена!');
 function pirushka() {
 var URL = 'http://www.pir.nnov.ru/pirushka/restmenu/';
 needle.get(URL, function(err, res){
-    if (err) throw err;
+    if (err) { return console.log('pirushka not working'); };
 	final_var_pirushka = '';
 	var name_id = `.itm4 .rest-menu .price-list`;
     var $ = cheerio.load(res.body),
