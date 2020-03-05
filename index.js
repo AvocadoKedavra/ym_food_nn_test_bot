@@ -89,6 +89,13 @@ needle.get(URL, function(err, res){
 					final_var += '\n' + handyFunctions.remove_spaces(err, $(this).text());
 				});
 			});
+			final_var += '\n *Постное меню:*';
+			rest_menu = $(name_idPost).each(function(i, item){
+				final_var += '\n *' + $(this).find('h3').text() + '*';
+				$(this).find('dl').each(function(i, item) {
+					final_var += '\n' + handyFunctions.remove_spaces(err, $(this).text());
+				});
+			});
 	console.log('Баренц загружен!');
 });
 };
