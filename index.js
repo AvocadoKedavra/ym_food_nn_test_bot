@@ -26,11 +26,16 @@ Date.prototype.getWeek = function () {
             mukka();
 			kfc();
 			samurai();
-            app.telegram.sendMessage(fs.readFileSync("users.txt", "utf8"), final_var);
             console.log('The answer to life, the universe, and everything!');
         });
 		};
 
+		function uptime(hours,minutes) {
+			var j = schedule.scheduleJob(minutes + ' ' + hours + ' ' + '* * *', function(){
+				app.telegram.sendMessage(fs.readFileSync("users.txt", "utf8"), "It's Working");
+			});
+			};
+		
 function samurai() {
 	var myDate = new Date(),
 		samuraiVar = myDate.getWeek()%10;
@@ -168,7 +173,7 @@ getMenu(10,00);
 getMenu(10,30);
 getMenu(11,30);
 getMenu(12,30);
-
+uptime(10,30);
 
 // bot commands for user
 app.hears('/kuma', ctx => {
