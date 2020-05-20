@@ -25,7 +25,6 @@ Date.prototype.getWeek = function () {
             pirushka();
             mukka();
 			kfc();
-			samurai();
             console.log('The answer to life, the universe, and everything!');
         });
 		};
@@ -174,7 +173,7 @@ kuma();
 pirushka();
 mukka();
 kfc();
-samurai();
+
 
 // scheldue for geting actual information
 getMenu(10,00);
