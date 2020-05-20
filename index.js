@@ -82,12 +82,20 @@ function samurai() {
 
 function barents() {
 var name_id = `.itm7 .rest-menu .price-list`,
+	name_idPost = `.itm10 .rest-menu .price-list`,
 	URL = 'http://www.pir.nnov.ru/barents/restmenu/';
 needle.get(URL, function(err, res){
     if (err) { return console.log('barents not working'); };
 	final_var = '';
     var $ = cheerio.load(res.body),
             rest_menu = $(name_id).each(function(i, item){
+				final_var += '\n *' + $(this).find('h3').text() + '*';
+				$(this).find('dl').each(function(i, item) {
+					final_var += '\n' + handyFunctions.remove_spaces(err, $(this).text());
+				});
+			});
+			final_var += '\n\n *Постное меню:* \n';
+			rest_menu = $(name_idPost).each(function(i, item){
 				final_var += '\n *' + $(this).find('h3').text() + '*';
 				$(this).find('dl').each(function(i, item) {
 					final_var += '\n' + handyFunctions.remove_spaces(err, $(this).text());
