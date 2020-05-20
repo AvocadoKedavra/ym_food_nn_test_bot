@@ -16,7 +16,7 @@ module.exports = {
             console.log('The "data to append" was appended to file!');
          });
         if (shopMenu == '') {
-            return ctx.replyWithMarkdown('Ресторан - или убрал страницу меню, или в корне изменил форматирование страницы. Как только я пойму что с ней - я всё поправлю. \n_- @AvocadoKedavra_');
+            return ctx.replyWithMarkdown('Ресторан - или убрал страницу меню, или в корне изменил форматирование страницы. Как только я пойму что с ней - я всё поправлю. \n_- @AvokadoKedavra_');
         }
         if (shopName == 'SAMURAI') {
             return ctx.replyWithMarkdown('_'+ shopName +':_' + shopMenu);
