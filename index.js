@@ -139,7 +139,7 @@ needle.get(URL, function(err, res){
 };
 
 function mukka() {
-	var URL = 'https://ekdostavka.ru/rest/mukka/Lunch/';
+	var URL = 'https://ekdostavka.ru/rest/mukka/lunch-mukka/';
 		needle.get(URL, function(err, res){
     if (err) { return console.log('Mukka not working'); };
 	final_var_mukka = '';
