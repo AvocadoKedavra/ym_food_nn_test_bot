@@ -23,7 +23,6 @@ Date.prototype.getWeek = function () {
             barents();
             kuma();
             pirushka();
-            mukka();
 			kfc();
             console.log('The answer to life, the universe, and everything!');
         });
@@ -137,21 +136,6 @@ needle.get(URL, function(err, res){
 	console.log('Пирушка загружена!');
 });
 };
-
-function mukka() {
-	var URL = 'https://ekdostavka.ru/rest/mukka/lunch-mukka/';
-		needle.get(URL, function(err, res){
-    if (err) { return console.log('Mukka not working'); };
-	final_var_mukka = '';
-	var name_id = `div.item_cards div:nth-child(1) .b_luch_selector`;
-	var $ = cheerio.load(res.body),
-	rest_menu = $(name_id).find('option').each(function(i, item){
-		final_var_mukka += '\n' + $(this).text();
-	});
-console.log('Мукка загружена!');
-});
-};
-
 
 function kfc() {
 var name_id = `#root div div.pt-64 div.grid_inner div:nth-child(3) div`,
