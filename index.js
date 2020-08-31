@@ -9,7 +9,6 @@ const fs = require("fs"),
 var final_var = '',
 	final_var_kuma = '',
 	final_var_pirushka = '',
-	final_var_mukka = '',
 	final_var_kfc = '',
 	final_var_samurai = '';
 
@@ -155,7 +154,6 @@ needle.get(URL, function(err, res){
 barents();
 kuma();
 pirushka();
-mukka();
 kfc();
 
 
@@ -171,9 +169,6 @@ app.hears('/kuma', ctx => {
 	handyFunctions.botMenuMessage('Кума', final_var_kuma, ctx)
 });
 
-app.hears('/mukka', ctx => {
-	handyFunctions.botMenuMessage('Mukka', final_var_mukka, ctx)
-});
 
 app.hears('/pirushka', ctx => {
 	handyFunctions.botMenuMessage('Пирушка у Ганса', final_var_pirushka, ctx)
@@ -198,10 +193,6 @@ app.hears('/samurai@ym_food_nn_test_bot', ctx => {
 
 app.hears('/kuma@ym_food_nn_test_bot', ctx => {
 	handyFunctions.botMenuMessage('Кума', final_var_kuma, ctx)
-});
-
-app.hears('/mukka@ym_food_nn_test_bot', ctx => {
-	handyFunctions.botMenuMessage('Mukka', final_var_mukka, ctx)
 });
 
 app.hears('/pirushka@ym_food_nn_test_bot', ctx => {
